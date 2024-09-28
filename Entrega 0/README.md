@@ -8,6 +8,6 @@ Finalmente, y por temas de tiempo, se utilizó chatgpt para la ayuda de escritur
 
 Grupo Tableton
 Integrantes:
-Mauricio Alarcón
+Mauricio Alarcón Arias
 Benjamin Sanchez
 Benjamin Soler
