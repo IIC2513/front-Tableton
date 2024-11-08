@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import App from "./App"
+import Background from "./Background"
 
 function Routing(){
     return(
@@ -8,7 +9,7 @@ function Routing(){
         
             <Routes>
 
-                <Route path={"/"} element= {<App></App>}></Route>
+                <Route path={"/"} element= {<Background></Background>}></Route>
 
             </Routes>
         
