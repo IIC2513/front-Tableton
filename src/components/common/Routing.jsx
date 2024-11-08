@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Index from "./Index"
 import App from "./App"
-import Background from "./Background"
 
 function Routing(){
     return(
@@ -9,7 +9,7 @@ function Routing(){
         
             <Routes>
 
-                <Route path={"/"} element= {<Background></Background>}></Route>
+                <Route path={"/"} element= {<Index></Index>}></Route>
 
             </Routes>
         

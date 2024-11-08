@@ -4,7 +4,7 @@ import "../../assets/styles/Background.css"
 
 function Background(){
     return(
-        <div class= "Background" style={{ backgroundImage: `url(${fondo})` }}>
+        <div className= "Background" style={{ backgroundImage: `url(${fondo})` }}>
 
         </div>
     )
