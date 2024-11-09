@@ -10,6 +10,7 @@ function Routing(){
             <Routes>
 
                 <Route path={"/"} element= {<Index></Index>}></Route>
+                <Route path={"/login"} element= {<App></App>}></Route>
 
             </Routes>
         

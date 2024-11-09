@@ -1,6 +1,7 @@
 
 import Background from "./Background"
 import ListaJugadores from "../landingPage/listaJugadores"
+import Botones from "../landingPage/botones"
 import "../../assets/styles/index.css"
 
 function Index(){
@@ -14,6 +15,10 @@ function Index(){
 
                 <ListaJugadores></ListaJugadores>
 
+            </div>
+
+            <div>
+                <Botones></Botones>
             </div>
     
 
