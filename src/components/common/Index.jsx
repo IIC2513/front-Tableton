@@ -1,7 +1,7 @@
 
 import Background from "./Background"
-import ListaJugadores from "../landingPage/listaJugadores"
-import Botones from "../landingPage/botones"
+import ListaJugadores from "../landingPage/ListaJugadoresLandingPage"
+import Botones from "../landingPage/botonesLandingPage"
 import "../../assets/styles/index.css"
 
 function Index(){
