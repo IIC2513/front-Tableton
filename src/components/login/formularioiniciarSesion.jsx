@@ -41,9 +41,9 @@ function FormularioIniciarSesion(){
 
 
     return (
-        <div className="contenedorFormulario">
 
-            <form onSubmit={handleSubmit}>
+
+            <form onSubmit={handleSubmit} className="contenedorFormulario">
 
             <p>Correo</p>
             <input 
@@ -64,13 +64,15 @@ function FormularioIniciarSesion(){
 
             <Link to="" className="elementos" id="olvidarContraseña">¿Olvidaste la contraseña?</Link>
 
+            <br></br>
+
             <button type="submit" className="elementos" >Iniciar Sesión</button>
 
             
             </form>
             
 
-        </div>
+
     )
 }
 
