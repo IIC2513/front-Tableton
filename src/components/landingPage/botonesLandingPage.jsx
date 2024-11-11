@@ -11,12 +11,18 @@ function botones(){
 
     // para navegar entre rutas https://stackoverflow.com/questions/34735580/how-to-do-a-redirect-to-another-route-with-react-router
 
-    const { token } = useContext(AuthContext);
+    const { token, setToken } = useContext(AuthContext);
     const navigate = useNavigate();
     
 
     const hacerLogin = () =>{
         navigate("/login")
+    };
+
+    const cerrarSesion = () => {
+        setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
+        localStorage.removeItem("token"); // Borra el token del localStorage
+        navigate("/"); // Navega a la página de inicio de sesión o donde prefieras
     };
 
     const crearJugador = async () => {
@@ -55,20 +61,14 @@ function botones(){
         <div className="contenedorBotones">
 
             <div>
-                {(() => {   //ayuda chatgpt para mostrar si esta logueado o no
-                    if (token != "null") { //el token null que se guarda en localstorage es string
-
-                        return (
-                            <button onClick={crearJugador}> Unirse a Partida</button>
-                        );
-                        
-                    } else {
-
-                        return (
-                            <button onClick={hacerLogin} id="IniciarSesionRegistrarse">Iniciar Sesion/Registrarse</button>
-                        );
-                    }
-                })()}
+            {token && token !== "null" ? (
+                <>
+                    <button onClick={crearJugador}>Unirse a Partida</button>
+                    <button onClick={cerrarSesion}>Cerrar Sesión</button>
+                </>
+            ) : (
+                <button onClick={hacerLogin} id="IniciarSesionRegistrarse">Iniciar Sesion/Registrarse</button>
+            )}
             </div>
 
         </div>
