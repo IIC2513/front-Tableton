@@ -1,0 +1,23 @@
+
+
+
+.contenedorPadreInterfaz{   /*Chatpgt me ayudó a crear un contenedor padre, ya que necesitaba que ocupara toda la pantalla*/
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    height: auto;
+}
+
+
+/* Contenedor de la lista y tablero, ajustado al contenido */
+.Contenedor_lista_tableroInterfaz{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    width: auto;    /* El ancho depende de su contenido */
+    height: auto;   /* La altura depende de su contenido */
+    margin-bottom: 200px;
+    margin-right: 150px;
+    justify-content: space-evenly;
+    align-items: center;     /* Centra los elementos en el eje vertical */
+}
