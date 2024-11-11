@@ -19,7 +19,7 @@ function botones(){
         navigate("/login")
     };
 
-    const cerrarSesion = () => {
+    const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
         setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
         localStorage.removeItem("token"); // Borra el token del localStorage
         navigate("/"); // Navega a la página de inicio de sesión o donde prefieras
