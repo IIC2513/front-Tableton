@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import "../../assets/styles/Board.css"
 import Casilla from "./Casilla"
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../auth/AuthContext";
 
 function Board({enPartida}){
 
@@ -14,21 +16,43 @@ function Board({enPartida}){
     ]
 
     const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); 
+    const { token, setToken } = useContext(AuthContext);
+    const partidaId = 1 //harcodeado por mientras
 
     const fetchJugadoresPosicion = async () => {
 
-        console.log("entre a fetchjugadores")
+        // console.log("entre a fetchjugadores")
         try {
             const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/1/listarJugadores`); // Ajusta la URL según tu backend //HARDCODEADO EL 1
 
-            console.log("la respuesta de axios fue: " + JSON.stringify(response.data)) //chatgpt para imprimir bien el json
+            // console.log("la respuesta de axios fue: " + JSON.stringify(response.data)) //chatgpt para imprimir bien el json
 
             setJugadoresEnPosicion(response.data); // Supón que la respuesta es un array de jugadores
-            console.log("jugadoresenposicion es: " + jugadoresEnPosicion)
+            // console.log("jugadoresenposicion es: " + jugadoresEnPosicion)
         } catch (error) {
             console.error("Error al obtener posiciones de jugadores:", error);
         }
     };
+
+    const tirarDados = async () => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/jugador/mover`, 
+                {
+                partidaId: partidaId    
+            },
+            {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Agregar token para autenticación Chatgpt para pasar el token
+                    }
+                });
+
+            console.log("Jugador movido:", response.data)
+            fetchJugadoresPosicion(); 
+
+        } catch (error) {
+            console.error("Error al mover el jugador:", error);
+        }
+    }
 
     // useEffect para actualizar las posiciones cuando enPartida cambia a true
     useEffect(() => {
@@ -45,6 +69,7 @@ function Board({enPartida}){
             <div className="Board">
 
                 <button onClick={fetchJugadoresPosicion}>Actualizar Posiciones de Jugadores</button>
+                <button onClick={tirarDados}>Tirar Dados</button>
 
                 {casillas.map((casillaId, index) => (
                     <Casilla key={index} casillaPosicion={casillaId} enPartida={true} jugadoresEnPosicion={jugadoresEnPosicion} />

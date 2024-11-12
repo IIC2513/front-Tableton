@@ -3,9 +3,9 @@ import "../../assets/styles/Casilla.css"
 
 function Casilla({ casillaPosicion, enPartida , jugadoresEnPosicion}) {
 
-    console.log("ya en el componente casilla ")
-    console.log("la casillaPosicion: " + casillaPosicion)
-    console.log("jugadoresEnPosicion: " + jugadoresEnPosicion)
+    // console.log("ya en el componente casilla ")
+    // console.log("la casillaPosicion: " + casillaPosicion)
+    // console.log("jugadoresEnPosicion: " + jugadoresEnPosicion)
 
      // Convierte casillaPosicion en número si es un string CHATGPT porque casillaPosicion no es un numero
     const posicionNumerica = typeof casillaPosicion === "string" ? parseInt(casillaPosicion.replace(/\D/g, "")) : casillaPosicion;
@@ -13,12 +13,12 @@ function Casilla({ casillaPosicion, enPartida , jugadoresEnPosicion}) {
 
     // Filtra los jugadores que están en la posición actual de la casilla//  mismo que arriba
     const jugadoresEnEstaCasilla = jugadoresEnPosicion.filter(jugador => {
-        console.log("jugador.posicion:", jugador.posicion, "comparado con posicionNumerica:", posicionNumerica);
+        // console.log("jugador.posicion:", jugador.posicion, "comparado con posicionNumerica:", posicionNumerica);
         return jugador.posicion === posicionNumerica;
     });
 
 
-    console.log("los jugadores en esta casilla son: " + jugadoresEnEstaCasilla)
+    // console.log("los jugadores en esta casilla son: " + jugadoresEnEstaCasilla)
 
     if (enPartida) {    //Chatgpt me ayudo a poner la ficha de cada jugador
         return (
