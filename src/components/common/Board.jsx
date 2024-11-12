@@ -1,6 +1,8 @@
 
+import React, { useState, useEffect } from "react";
 import "../../assets/styles/Board.css"
 import Casilla from "./Casilla"
+import axios from "axios";
 
 function Board({enPartida}){
 
@@ -11,20 +13,53 @@ function Board({enPartida}){
         ,"casillaPosicion24"
     ]
 
+    const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); // Estado para almacenar posiciones de jugadores
+
+    // Función para obtener las posiciones de los jugadores desde el backend usando Axios
+    const fetchJugadoresPosicion = async () => {
+
+        console.log("entre a fetchjugadores")
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/1/listarJugadores`); // Ajusta la URL según tu backend //HARDCODEADO EL 1
+
+            console.log("la respuesta de axios fue: " + JSON.stringify(response.data)) //chatgpt para imprimir bien el json
+
+            setJugadoresEnPosicion(response.data); // Supón que la respuesta es un array de jugadores
+            console.log("jugadoresenposicion es: " + jugadoresEnPosicion)
+        } catch (error) {
+            console.error("Error al obtener posiciones de jugadores:", error);
+        }
+    };
+
+    // useEffect para actualizar las posiciones cuando enPartida cambia a true
+    useEffect(() => {
+        if (enPartida) {
+            fetchJugadoresPosicion(); // Solicita posiciones al iniciar la partida
+        }
+    }, [enPartida]);
+
 
     if (enPartida) {    
 
         return (
-            <div className="BoardEnPartida">
 
+            <div className="Board">
+
+                <button onClick={fetchJugadoresPosicion}>Actualizar Posiciones de Jugadores</button>
+
+                {casillas.map((casillaId, index) => (
+                    <Casilla key={index} casillaPosicion={casillaId} enPartida={true} jugadoresEnPosicion={jugadoresEnPosicion} />
+                ))}
             </div>
+
+
         );
     } else {
 
         return (
             <div className="Board">
                 {casillas.map((casillaId, index) => (
-                    <Casilla key={index} casillaPosicion={casillaId} enPartida={false} />
+                    <Casilla key={index} casillaPosicion={casillaId} enPartida={false} jugadoresEnPosicion={[]} />
                 ))}
             </div>
         );

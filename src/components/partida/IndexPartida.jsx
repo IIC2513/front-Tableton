@@ -12,7 +12,7 @@ function IndexPartida(){
             <div className="Contenedor_lista_tablero">
 
                 {/* <ListaJugadores></ListaJugadores> */}
-                <Board enPartida={false}></Board>
+                <Board enPartida={true}></Board>
 
                 <div className="hacerEspacion"></div>
 
