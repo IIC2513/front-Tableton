@@ -47,7 +47,7 @@ function FormularioIniciarSesion(){
 
             <p>Correo</p>
             <input 
-                typeof="email" 
+                type="email" 
                 placeholder="Ingrese Correo"
                 onChange={e => setEmail(e.target.value)}
                 required>
@@ -56,7 +56,7 @@ function FormularioIniciarSesion(){
             <p>Contraseña</p>
 
             <input 
-                typeof="password" 
+                type="password" 
                 placeholder="Ingrese Contraseña"
                 onChange={e => setPassword(e.target.value)}
                 required>

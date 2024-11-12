@@ -50,7 +50,7 @@ function FormularioRegistrarse(){
 
             <p>Usuario</p>
             <input 
-                typeof="username" 
+                type="username" 
                 placeholder="Ingrese Usuario"
                 onChange={e => setNombre(e.target.value)}
                 required
@@ -60,7 +60,7 @@ function FormularioRegistrarse(){
             <p>Correo</p>
 
             <input 
-                typeof="email" 
+                type="email" 
                 placeholder="Ingrese Correo"
                 onChange={e => setEmail(e.target.value)}
                 required
@@ -71,7 +71,7 @@ function FormularioRegistrarse(){
             <p>Contraseña</p>
 
             <input 
-                typeof="password" 
+                type="password" 
                 placeholder="Ingrese Contraseña"
                 onChange={e => setPassword(e.target.value)}
                 required
