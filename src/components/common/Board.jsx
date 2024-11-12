@@ -54,6 +54,29 @@ function Board({enPartida}){
         }
     }
 
+    const comprarInvestigacion = async () => {
+        try {
+            console.log("Antes de comprar la investigacion")
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/jugador/comprar`, 
+                {
+                partidaId: partidaId    
+            },
+            {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Agregar token para autenticación Chatgpt para pasar el token
+                    }
+                });
+
+            console.log("Antes de comprar la investigacion")
+
+            console.log("Compra exitosa:", response.data)
+            fetchJugadoresPosicion(); //al recibir toda la info de los jugadores, se peuden actualizar los creditos, sus investigaciones, etc.
+
+        } catch (error) {
+            console.error("Error al comprar investigacion:", error);
+        }
+    }
+
     // useEffect para actualizar las posiciones cuando enPartida cambia a true
     useEffect(() => {
         if (enPartida) {
@@ -70,6 +93,7 @@ function Board({enPartida}){
 
                 <button onClick={fetchJugadoresPosicion}>Actualizar Posiciones de Jugadores</button>
                 <button onClick={tirarDados}>Tirar Dados</button>
+                <button onClick={comprarInvestigacion}>Comprar Investigacion</button>
 
                 {casillas.map((casillaId, index) => (
                     <Casilla key={index} casillaPosicion={casillaId} enPartida={true} jugadoresEnPosicion={jugadoresEnPosicion} />
