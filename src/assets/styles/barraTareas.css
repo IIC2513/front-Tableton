@@ -1,0 +1,41 @@
+/* CHATGPT LE METIO ESTILO */
+
+
+.barra-tareas { 
+    background-color: #333;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;  
+    margin-bottom: 50px;
+  }
+  
+  .barra-tareas ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .barra-tareas li {
+    display: inline;
+  }
+  
+  .barra-tareas a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+  }
+
+  #ingresado{
+    color: white;
+  }
+
+  
+  .barra-tareas a:hover {
+    background-color: #555;
+  }
+  

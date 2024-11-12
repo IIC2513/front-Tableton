@@ -1,0 +1,55 @@
+/* Estilos para el tablero */
+.Board {        /*CHATGPT me ayudó con hacer el tablero fisicamente, lo hizo con grid*/
+    display: grid;
+    grid-template-areas: 
+        "casillaPosicion19 casillaPosicion18 casillaPosicion17 casillaPosicion16 casillaPosicion15 casillaPosicion14 casillaPosicion13"
+        "casillaPosicion20         .               .              .                .                   .       casillaPosicion12"
+        "casillaPosicion21         .               .              .                .                   .       casillaPosicion11"
+        "casillaPosicion22         .               .              .                .                   .       casillaPosicion10"
+        "casillaPosicion23         .               .              .                .                   .       casillaPosicion9"
+        "casillaPosicion24         .               .              .                .                   .       casillaPosicion8"
+        "casillaPosicion1 casillaPosicion2 casillaPosicion3 casillaPosicion4 casillaPosicion5 casillaPosicion6 casillaPosicion7";
+
+    width: 600px;  /* Tamaño del tablero */
+    height: 600px;
+  }
+  
+  /* Estilos generales de cada casilla */
+  .casilla {
+    background-size: cover;
+    background-position: center;
+    width: 100px; /* Ajusta el tamaño según sea necesario */
+    height: 100px;
+  }
+  
+  /* Asignación de cada casilla a su área en el grid */
+  #casillaPosicion1 { grid-area: casillaPosicion1; }
+  #casillaPosicion2 { grid-area: casillaPosicion2; }
+  #casillaPosicion3 { grid-area: casillaPosicion3; }
+  #casillaPosicion4 { grid-area: casillaPosicion4; }
+  #casillaPosicion5 { grid-area: casillaPosicion5; }
+  #casillaPosicion6 { grid-area: casillaPosicion6; }
+  #casillaPosicion7 { grid-area: casillaPosicion7; }
+  #casillaPosicion8 { grid-area: casillaPosicion8; }
+  #casillaPosicion9 { grid-area: casillaPosicion9; }
+  #casillaPosicion10 { grid-area: casillaPosicion10; }
+  #casillaPosicion11 { grid-area: casillaPosicion11; }
+  #casillaPosicion12 { grid-area: casillaPosicion12; }
+  #casillaPosicion13 { grid-area: casillaPosicion13; }
+  #casillaPosicion14 { grid-area: casillaPosicion14; }
+  #casillaPosicion15 { grid-area: casillaPosicion15; }
+  #casillaPosicion16 { grid-area: casillaPosicion16; }
+  #casillaPosicion17 { grid-area: casillaPosicion17; }
+  #casillaPosicion18 { grid-area: casillaPosicion18; }
+  #casillaPosicion19 { grid-area: casillaPosicion19; }
+  #casillaPosicion20 { grid-area: casillaPosicion20; }
+  #casillaPosicion21 { grid-area: casillaPosicion21; }
+  #casillaPosicion22 { grid-area: casillaPosicion22; }
+  #casillaPosicion23 { grid-area: casillaPosicion23; }
+  #casillaPosicion24 { grid-area: casillaPosicion24; }
+
+
+.hacerEspacion{
+    width: 200px;
+}
+  

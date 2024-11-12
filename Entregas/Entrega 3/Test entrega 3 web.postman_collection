@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "d49f8096-e160-4da5-beda-714287f8b435",
+		"name": "Test entrega 2 web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26420648"
+	},
+	"item": [
+		{
+			"name": "crear usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"prueba@correo.cl\",\r\n    \"nombre\": \"Usuario 1\",\r\n    \"contrasena\": \"Contraseña\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/crearUsuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"crearUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logearse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"prueba@correo.cl\",\r\n    \"contrasena\": \"Contraseña\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/loginUsuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"loginUsuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear partida",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/juego/inicializar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"juego",
+						"inicializar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear jugador",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ1c2VyIl0sImlhdCI6MTczMTM3ODMwMSwic3ViIjoiNCJ9.xnb63kTC8LDbZ6DumJUNl3stHXBaFKnhLYjzI0Po2bI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n  \"partidaId\": 1\r\n\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/jugador",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"jugador"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "iniciar partida",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/juego/iniciar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"juego",
+						"iniciar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Estado partida",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/juego/estado/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"juego",
+						"estado",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lista jugadores partida",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/1/listarJugadores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"1",
+						"listarJugadores"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tirar dados",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ1c2VyIl0sImlhdCI6MTczMTQ0ODU0Nywic3ViIjoiMSJ9.hLXW5DQyNvLl3pQfWFmCdFmPWHtLk-h-1BRY9l6XPEM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"partidaId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/jugador/mover",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"jugador",
+						"mover"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comprar investigacion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ1c2VyIl0sImlhdCI6MTczMTM3ODMwMSwic3ViIjoiNCJ9.xnb63kTC8LDbZ6DumJUNl3stHXBaFKnhLYjzI0Po2bI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jugadorId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/jugador/comprar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"jugador",
+						"comprar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mejorar investigacion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jugadorId\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/jugador/mejorar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"jugador",
+						"mejorar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cambiar credito",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jugadorId\": 1,\r\n    \"creditos\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/jugador/cambiarCredito",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"jugador",
+						"cambiarCredito"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "terminar partida",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"partidaId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/juego/terminar/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"juego",
+						"terminar",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reinicar BDD",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ1c2VyIl0sImlhdCI6MTczMTM3MjUwMywic3ViIjoiOCJ9.BJB3v9xoSJIvAu7qwjolGDI2tNMGSEttgZ1DW0l_DIw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/reiniciar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reiniciar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
