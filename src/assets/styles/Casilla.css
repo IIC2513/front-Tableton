@@ -1,8 +1,40 @@
 
 
-.casilla{
+.casilla, .casillaEnPartida{
     height: 109px;
     width: 108px;
+    position: relative; /* Necesario para posicionar las fichas dentro de la casilla CHAT GPT ME AYUDA A OCLOCAR LAS FICHAS*/ 
+}
+
+.ficha {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.jugador1 {
+    background-color: red;
+    top: 5px;
+    left: 5px;
+}
+
+.jugador2 {
+    background-color: blue;
+    top: 5px;
+    right: 5px;
+}
+
+.jugador3 {
+    background-color: green;
+    bottom: 5px;
+    left: 5px;
+}
+
+.jugador4 {
+    background-color: yellow;
+    bottom: 5px;
+    right: 5px;
 }
 
 #casillaPosicion1{

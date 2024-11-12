@@ -19,6 +19,10 @@ function botones(){
         navigate("/login")
     };
 
+    const irPartida = () =>{
+        navigate("/partida")
+    };
+
     const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
         setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
         localStorage.removeItem("token"); // Borra el token del localStorage
@@ -27,7 +31,7 @@ function botones(){
 
     const crearJugador = async () => {
 
-        const partidaId = 2 //harcodeado por mientras
+        const partidaId = 1 //harcodeado por mientras
 
         try {   //chatgpt ayuda para pasar por el header
             console.log("antes del post")
@@ -65,6 +69,7 @@ function botones(){
                 <>
                     <button onClick={crearJugador}>Unirse a Partida</button>
                     <button onClick={cerrarSesion}>Cerrar Sesión</button>
+                    <button onClick={irPartida}>Ir a partida</button>
                 </>
             ) : (
                 <button onClick={hacerLogin} id="IniciarSesionRegistrarse">Iniciar Sesion/Registrarse</button>

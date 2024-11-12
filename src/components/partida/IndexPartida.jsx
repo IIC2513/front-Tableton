@@ -1,21 +1,23 @@
 
 import Background from "../common/Background"
-import BoardPartida from "./BoardPartida"
-import "../../assets/styles/Interfaz/IndexPartida.css"
+import Board from "../common/Board"
+import "../../assets/styles/Board.css"
+import BarraTareas from "../common/barraTareas"
 
 function IndexPartida(){
     return (
         <div className="contenedorPadreInterfaz">
 
+        <BarraTareas></BarraTareas>
         <Background></Background>
 
-            <div className="Contenedor_lista_tableroInterfaz">
+
+            <div className="Contenedor_lista_tablero">
 
                 {/* <ListaJugadores></ListaJugadores> */}
-                <BoardPartida></BoardPartida>
-                <P>holaaaaaa</P>
+                <Board enPartida={true}></Board>
 
-                <div className="hacerEspacionInterfaz"></div>
+                <div className="hacerEspacion"></div>
 
             </div>
 
