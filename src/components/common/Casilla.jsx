@@ -1,11 +1,17 @@
 import React from "react"
 import "../../assets/styles/Casilla.css"
 
-function Casilla({ casillaPosicion }) {
+function Casilla({ casillaPosicion, enPartida }) {
     return (
-        <div className={`casilla`} id={casillaPosicion}>
+        enPartida ? (
+            <div className="casillaEnPartida" id={casillaPosicion}>
 
-        </div>
+            </div>
+        ) : (
+            <div className="casilla" id={casillaPosicion}> {/* falso*/}
+
+            </div>
+        )
     );
 }
 

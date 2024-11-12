@@ -2,7 +2,7 @@
 import "../../assets/styles/Board.css"
 import Casilla from "./Casilla"
 
-function Board(){
+function Board({enPartida}){
 
     const casillas = [
         "casillaPosicion1","casillaPosicion2", "casillaPosicion3","casillaPosicion4", "casillaPosicion5","casillaPosicion6", "casillaPosicion7"
@@ -12,13 +12,23 @@ function Board(){
     ]
 
 
-    return (
-        <div className="Board">
-            {casillas.map((casillaId, index) => (
-                <Casilla key={index} casillaPosicion={casillaId} />
-            ))}
-        </div>
-    )
+    if (enPartida) {    
+
+        return (
+            <div className="BoardEnPartida">
+
+            </div>
+        );
+    } else {
+
+        return (
+            <div className="Board">
+                {casillas.map((casillaId, index) => (
+                    <Casilla key={index} casillaPosicion={casillaId} enPartida={false} />
+                ))}
+            </div>
+        );
+    }
 }
 
 export default Board

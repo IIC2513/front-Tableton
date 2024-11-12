@@ -27,7 +27,7 @@ function botones(){
 
     const crearJugador = async () => {
 
-        const partidaId = 2 //harcodeado por mientras
+        const partidaId = 1 //harcodeado por mientras
 
         try {   //chatgpt ayuda para pasar por el header
             console.log("antes del post")
