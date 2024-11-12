@@ -13,9 +13,8 @@ function Board({enPartida}){
         ,"casillaPosicion24"
     ]
 
-    const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); // Estado para almacenar posiciones de jugadores
+    const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); 
 
-    // Función para obtener las posiciones de los jugadores desde el backend usando Axios
     const fetchJugadoresPosicion = async () => {
 
         console.log("entre a fetchjugadores")
