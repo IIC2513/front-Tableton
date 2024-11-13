@@ -23,6 +23,14 @@ function botones(){
         navigate("/partida")
     };
 
+    const irNosotros = () => {
+        navigate("/nosotros");
+    };
+
+    const irReglas = () => {
+        navigate("/reglas");
+    };
+
     const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
         setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
         localStorage.removeItem("token"); // Borra el token del localStorage
@@ -70,6 +78,8 @@ function botones(){
                     <button onClick={crearJugador}>Unirse a Partida</button>
                     <button onClick={cerrarSesion}>Cerrar Sesión</button>
                     <button onClick={irPartida}>Ir a partida</button>
+                    <button onClick={irNosotros}>Nosotros</button>
+                    <button onClick={irReglas}>Reglas</button>
                 </>
             ) : (
                 <button onClick={hacerLogin} id="IniciarSesionRegistrarse">Iniciar Sesion/Registrarse</button>
