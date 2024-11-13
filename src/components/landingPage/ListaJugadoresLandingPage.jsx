@@ -1,36 +1,34 @@
 
-import "../../assets/styles/landingPage/listaJugadores.css"
+import "../../assets/styles/landingPage/listaJugadores.css";
 import { useState } from "react";
 
-function listaJugadores(){
+function listaJugadores() {
 
-    // Estado para almacenar los nombres de los jugadores          Ayuda ChatGPT para manejar las listas
-    const [jugadores, setJugadores] = useState([]); 
+  // Estado para almacenar los nombres de los jugadores          Ayuda ChatGPT para manejar las listas
+  const [jugadores, setJugadores] = useState([]);
 
-    // Función para agregar un jugador a la lista
-    const agregarJugador = (nombre) => {
-        setJugadores([...jugadores, nombre]);       //particularmente aqui
-    };
+  // Función para agregar un jugador a la lista
+  const agregarJugador = (nombre) => {
+    setJugadores([...jugadores, nombre]);       //particularmente aqui
+  };
 
+  return(
+    <div className="backgroundListaJugadores">
 
+      <div className="listaJugadores">
 
-    return(
-        <div className="backgroundListaJugadores">
+        <p>Lista de Espera Jugadores</p>
 
-            <div className="listaJugadores">
+        <ul>
+          {jugadores.map((jugador, index) => (
+            <li key={index}>{jugador}</li>
+          ))}
+        </ul>
 
-                <p>Lista de Espera Jugadores</p>
+      </div>
 
-                <ul>
-                    {jugadores.map((jugador, index) => (
-                        <li key={index}>{jugador}</li>
-                    ))}
-                </ul>
-
-            </div>
-        
-        </div>
-    )
+    </div>
+  );
 }
 
-export default listaJugadores
+export default listaJugadores;

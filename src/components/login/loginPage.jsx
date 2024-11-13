@@ -1,39 +1,38 @@
 
-import "../../assets/styles/loginPage/loginPage.css"
-import FormularioIniciarSesion from "./formularioiniciarSesion"
-import FormularioRegistrarse from "./formularioRegistrarse"
-import Background from "../common/Background"
-import BarraTareas from "../common/barraTareas"
-import { useNavigate } from "react-router-dom"
+import "../../assets/styles/loginPage/loginPage.css";
+import FormularioIniciarSesion from "./formularioiniciarSesion";
+import FormularioRegistrarse from "./formularioRegistrarse";
+import Background from "../common/Background";
+import BarraTareas from "../common/barraTareas";
+import { useNavigate } from "react-router-dom";
 
-function LoginPage(){
+function LoginPage() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleclick = () =>{
-        navigate("/")
-    };
+  const handleclick = () =>{
+    navigate("/");
+  };
 
+  return (
 
-    return (
+    <div className="contenedorPadreLoginPage">
 
-        <div className="contenedorPadreLoginPage">
+      <div className="contenedorFormularios">
 
-        <div className="contenedorFormularios">
+        <Background></Background>
 
-            <Background></Background>
+        <BarraTareas></BarraTareas>
 
-            <BarraTareas></BarraTareas>
+        <FormularioIniciarSesion></FormularioIniciarSesion>
+        <FormularioRegistrarse></FormularioRegistrarse>
 
-            <FormularioIniciarSesion></FormularioIniciarSesion>
-            <FormularioRegistrarse></FormularioRegistrarse>
+      </div>
 
-        </div>    
+      <button id="botonVolver" onClick={handleclick}>Volver</button>
 
-            <button id="botonVolver" onClick={handleclick}>Volver</button>
-
-        </div>
-    )
+    </div>
+  );
 }
 
-export default LoginPage
+export default LoginPage;

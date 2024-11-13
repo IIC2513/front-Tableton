@@ -1,33 +1,31 @@
 
-import Background from "../common/Background"
-import Board from "../common/Board"
-import "../../assets/styles/Board.css"
-import BarraTareas from "../common/barraTareas"
+import Background from "../common/Background";
+import Board from "../common/Board";
+import "../../assets/styles/Board.css";
+import BarraTareas from "../common/barraTareas";
 
-function IndexPartida(){
-    return (
-        <div className="contenedorPadreInterfaz">
+function IndexPartida() {
+  return (
+    <div className="contenedorPadreInterfaz">
 
-        <BarraTareas></BarraTareas>
-        <Background></Background>
+      <BarraTareas></BarraTareas>
+      <Background></Background>
 
+      <div className="Contenedor_lista_tablero">
 
-            <div className="Contenedor_lista_tablero">
+        {/* <ListaJugadores></ListaJugadores> */}
+        <Board enPartida={true}></Board>
 
-                {/* <ListaJugadores></ListaJugadores> */}
-                <Board enPartida={true}></Board>
+        <div className="hacerEspacion"></div>
 
-                <div className="hacerEspacion"></div>
+      </div>
 
-            </div>
+      <div>
+        {/* <Botones></Botones> */}
+      </div>
 
-            <div>
-                {/* <Botones></Botones> */}
-            </div>
-    
-
-        </div>
-    )
+    </div>
+  );
 }
 
-export default IndexPartida
+export default IndexPartida;

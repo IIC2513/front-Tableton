@@ -1,16 +1,12 @@
-import fondo from "../../assets/imgs/fondoDifuminado.png"
-import "../../assets/styles/Background.css"
+import fondo from "../../assets/imgs/fondoDifuminado.png";
+import "../../assets/styles/Background.css";
 
+function Background() {
+  return(
+    <div className= "Background" style={{ backgroundImage: `url(${fondo})` }}>
 
-function Background(){
-    return(
-        <div className= "Background" style={{ backgroundImage: `url(${fondo})` }}>
-
-        </div>
-    )
+    </div>
+  );
 }
 
-
-
-
-export default Background
+export default Background;
