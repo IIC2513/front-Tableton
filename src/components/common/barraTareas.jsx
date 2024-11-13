@@ -54,7 +54,7 @@ function BarraTareas() {
 
       <ul>
         <li><Link to="/">Inicio</Link></li>
-        <li><Link to="/Instrucciones">Instrucciones</Link></li>
+        <li><Link to="/Reglas">Instrucciones</Link></li>
         <li><Link to="/Nosotros">Nosotros</Link></li>
 
         <div>
