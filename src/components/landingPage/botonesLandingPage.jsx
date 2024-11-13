@@ -22,6 +22,12 @@ function botones(){
     const irPartida = () =>{
         navigate("/partida")
     };
+    const irNosotros = () => {
+        navigate("/nosotros");
+    };
+    const irReglas = () => {
+        navigate("/reglas");
+    };
 
     const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
         setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
