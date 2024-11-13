@@ -22,11 +22,9 @@ function botones(){
     const irPartida = () =>{
         navigate("/partida")
     };
-
     const irNosotros = () => {
         navigate("/nosotros");
     };
-
     const irReglas = () => {
         navigate("/reglas");
     };

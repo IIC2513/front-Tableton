@@ -13,7 +13,7 @@ function Reglas() {
                 <li><strong>Pago por Investigaciones:</strong> Al caer en una investigacion de otro jugador, debera pagar una cantidad de creditos dependiendo de que tan avanzada este la investigación.</li>
                 <li><strong>Intercambio de Investigaciones:</strong> Un jugador puede negociar la compra de una investigacion de otro jugador. Si ambos jugadores estan de acuerdo, la investigacion cambia de dueño.</li>
                 <li><strong>Cartas Fortuitas:</strong> Al caer en una casilla fortuita, el jugador recibe una carta que puede otorgarle o restarle creditos o enviarlo a la Secretaría Academica, o otras posibilidades. </li>
-                <li><strong>Secretaría Académica:</strong> Al caer en esta casilla, el jugador perdera su próximo turno.</li>
+                <li><strong>Secretaría Académica:</strong> Al caer en esta casilla, el jugador perdera su proximo turno.</li>
                 <li><strong>Bono por Vuelta:</strong> Al completar una vuelta, los jugadores reciben creditos adicionales.</li>
                 <li><strong>Inactividad:</strong> Si un jugador no realiza su turno en 30 segundos, se salta al siguiente jugador.</li>
                 <li><strong>Eliminación:</strong> Un jugador sin creditos suficientes para pagar es eliminado de la partida y queda en modo espectador.</li>
