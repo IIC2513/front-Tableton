@@ -4,12 +4,14 @@ import { useState, useContext } from "react";
 import { Link ,useNavigate} from "react-router-dom"
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
+import { SocketContext } from "../../sockets/SocketContext";
 
 function FormularioRegistrarse(){
 
     const navigate = useNavigate();
 
     const {token, setToken} = useContext(AuthContext)
+    const {connectSocket} = useContext(SocketContext)
 
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
@@ -32,6 +34,9 @@ function FormularioRegistrarse(){
 
             const access_token = response.data.access_token
             setToken(access_token);
+
+            console.log("el response en iniciar sesion es",response)
+            connectSocket(response.data.userId)
 
             navigate("/")
 

@@ -4,12 +4,14 @@ import "../../assets/styles/loginPage/formularioIniciarSesion.css"
 import { Link ,useNavigate} from "react-router-dom"
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
+import { SocketContext } from "../../sockets/SocketContext";
 
 function FormularioIniciarSesion(){
 
     const navigate = useNavigate();
 
     const {token, setToken} = useContext(AuthContext)
+    const {connectSocket} = useContext(SocketContext)
 
     const [email, setEmail] = useState("");
     const [contrasena, setPassword] = useState("");
@@ -30,6 +32,9 @@ function FormularioIniciarSesion(){
 
             const access_token = response.data.access_token
             setToken(access_token);
+
+            console.log("el response en iniciar sesion es",response)
+            connectSocket(response.data.userId)
 
             navigate("/")
 
