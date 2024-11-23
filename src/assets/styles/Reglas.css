@@ -1,0 +1,35 @@
+.contenedorReglas {
+  min-height: 100vh; /* Asegura que el contenedor cubra toda la altura de la ventana */
+  display: flex;
+  flex-direction: column; /* Mantiene los elementos en columna */
+  justify-content: flex-start; /* Alinea los hijos al principio */
+}
+  
+  .tarjeta {
+    background-color: #209cda;
+    border-radius: 8px; 
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para efecto de tarjeta */
+    margin: 20px auto; /* Centra la tarjeta y añade separación */
+    max-width: 800px; /* Anchura máxima */
+}
+
+
+  .tarjeta h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .tarjeta ol {
+    padding-left: 20px; /* Indentación para la lista */
+  }
+  
+  .tarjeta li {
+    margin-bottom: 10px;
+  }
+  
+  .tarjeta p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  

@@ -67,22 +67,27 @@
 
 #casillaPosicion8{
     background-image: url("../imgs/casillas/casilla8.png");
+    transform: rotate(90deg);
 }
 
 #casillaPosicion9{
     background-image: url("../imgs/casillas/casilla9.png");
+    transform: rotate(90deg);
 }
 
 #casillaPosicion10{
     background-image: url("../imgs/casillas/casilla10.png");
+    transform: rotate(90deg);
 }
 
 #casillaPosicion11{
     background-image: url("../imgs/casillas/casilla11.png");
+    transform: rotate(90deg);
 }
 
 #casillaPosicion12{
     background-image: url("../imgs/casillas/casilla12.png");
+    transform: rotate(90deg);
 }
 
 #casillaPosicion13{
@@ -91,22 +96,27 @@
 
 #casillaPosicion14{
     background-image: url("../imgs/casillas/casilla14.png");
+    transform: rotate(180deg);
 }
 
 #casillaPosicion15{
     background-image: url("../imgs/casillas/casilla15.png");
+    transform: rotate(180deg);
 }
 
 #casillaPosicion16{
     background-image: url("../imgs/casillas/casilla16.png");
+    transform: rotate(180deg);
 }
 
 #casillaPosicion17{
     background-image: url("../imgs/casillas/casilla17.png");
+    transform: rotate(180deg);
 }
 
 #casillaPosicion18{
     background-image: url("../imgs/casillas/casilla18.png");
+    transform: rotate(180deg);
 }
 
 #casillaPosicion19{
@@ -115,20 +125,25 @@
 
 #casillaPosicion20{
     background-image: url("../imgs/casillas/casilla20.png");
+    transform: rotate(270deg);
 }
 
 #casillaPosicion21{
     background-image: url("../imgs/casillas/casilla21.png");
+    transform: rotate(270deg);
 }
 
 #casillaPosicion22{
     background-image: url("../imgs/casillas/casilla22.png");
+    transform: rotate(270deg);
 }
 
 #casillaPosicion23{
     background-image: url("../imgs/casillas/casilla23.png");
+    transform: rotate(270deg);
 }
 
 #casillaPosicion24{
     background-image: url("../imgs/casillas/casilla24.png");
-}
+    transform: rotate(270deg);}
+    

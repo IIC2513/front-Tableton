@@ -22,7 +22,6 @@
     height: 100px;
   }
   
-  /* Asignación de cada casilla a su área en el grid */
   #casillaPosicion1 { grid-area: casillaPosicion1; }
   #casillaPosicion2 { grid-area: casillaPosicion2; }
   #casillaPosicion3 { grid-area: casillaPosicion3; }
@@ -52,4 +51,6 @@
 .hacerEspacion{
     width: 200px;
 }
+
+
   
