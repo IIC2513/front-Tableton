@@ -1,7 +1,8 @@
 
 
 .backgroundListaJugadores{
-    background-color: rgba(214, 214, 214, 0.5); /* El último valor es la opacidad del fondo (0.5 = 50%) ChatGPT me ayudo con la opacidad*/ 
+    margin-top: 170px; 
+    background-color: #209cda; /* El último valor es la opacidad del fondo (0.5 = 50%) ChatGPT me ayudo con la opacidad*/ 
     height: 300px;
     padding: 10px 10px 100px 10px; /* arriba derecha abajo izquierda*/
     border-radius: 10px;
