@@ -6,7 +6,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthContext";
 
-function Board({enPartida}){
+function Board({enPartida, partidaId}){
 
     const casillas = [
         "casillaPosicion1","casillaPosicion2", "casillaPosicion3","casillaPosicion4", "casillaPosicion5","casillaPosicion6", "casillaPosicion7"
@@ -17,7 +17,7 @@ function Board({enPartida}){
 
     const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); 
     const { token, setToken } = useContext(AuthContext);
-    const partidaId = 1 //harcodeado por mientras
+    //const partidaId = 1 //harcodeado por mientras
 
     const fetchJugadoresPosicion = async () => {
 
