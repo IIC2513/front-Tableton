@@ -1,3 +1,4 @@
+import "../../assets/styles/landingPage/listaPartidas.css"
 import { SocketContext } from "../../sockets/SocketContext";
 import { AuthContext } from "../../auth/AuthContext";
 
@@ -70,8 +71,9 @@ function ListaPartidas() {
 
     return (
         <div className="backgroundListaPartidas">
+            <p id="titutloListaPartida">Lista de Partidas</p>
             <div className="listaPartidas">
-                <p>Lista de Partidas</p>
+                
                 {/* Mostrar la lista de partidas */}
                 {partidas.length > 0 ? (
                     <ul>
@@ -87,10 +89,12 @@ function ListaPartidas() {
                 ) : (
                     <p>No hay partidas creadas</p> // Mensaje alternativo si no hay partidas
                 )}
-            </div>
-            <button onClick={crearPartida}> Crear partida </button>
-            <button onClick={cerrarSesion}>Cerrar Sesión</button>
+            </div >
 
+            <div className="contenedorBotonesPartida">
+                <button onClick={crearPartida}> Crear partida </button>
+                <button onClick={cerrarSesion}>Cerrar Sesión</button>
+            </div>
         </div>
     );
 }
