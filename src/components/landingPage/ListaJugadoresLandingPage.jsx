@@ -3,8 +3,8 @@ import { useEffect, useState, useContext } from "react";
 import { SocketContext } from "../../sockets/SocketContext";
 import axios from "axios";
 
-function ListaJugadores() {
-    const gameId = 1; // Harcodeado
+function ListaJugadores({gameId}) {
+    //const gameId = 1; // Harcodeado
 
     const [players, setPlayers] = useState([]);
     const { socket } = useContext(SocketContext);

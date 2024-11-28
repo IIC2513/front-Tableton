@@ -6,7 +6,12 @@ import Board from "./Board"
 import BarraTareas from "./barraTareas"
 import "../../assets/styles/index.css"
 
+import { useParams } from 'react-router-dom';
+
 function Index(){
+
+    const { partidaId } = useParams(); // Obtienes el partidaId de la URL
+
     return (
         <div className="contenedorPadre">
 
@@ -16,14 +21,14 @@ function Index(){
 
             <div className="Contenedor_lista_tablero">
 
-                <ListaJugadores></ListaJugadores>
+                <ListaJugadores gameId={partidaId}></ListaJugadores>
                 <Board enPartida={false}></Board>
                 <div className="hacerEspacion"></div>
 
             </div>
 
             <div>
-                <Botones></Botones>
+                <Botones partidaId={partidaId} ubicacion="partidaEspera"></Botones>
             </div>
     
 

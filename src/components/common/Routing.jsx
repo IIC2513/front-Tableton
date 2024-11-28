@@ -14,8 +14,8 @@ function Routing(){
         
             <Routes>
 
-                <Route path={"/"} element= {<Index></Index>}></Route>
-                <Route path={"/landingpage"} element = {<LandingPage></LandingPage>}></Route>
+                <Route path={"/partida/:partidaId/espera"} element= {<Index></Index>}></Route>
+                <Route path={"/"} element = {<LandingPage></LandingPage>}></Route>
                 <Route path={"/login"} element= {<LoginPage></LoginPage>}></Route>
                 <Route path="/nosotros" element={<Nosotros></Nosotros>}></Route>
                 <Route path="/reglas" element={<Reglas></Reglas>}></Route>
