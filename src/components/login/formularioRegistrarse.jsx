@@ -22,6 +22,7 @@ function FormularioRegistrarse(){
         console.log("mandaste el formulario")
 
         //enviar los datos al backend
+        console.log(`${import.meta.env.VITE_BACKEND_URL}/crearUsuario`);
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/crearUsuario`,
             {
                 nombre,

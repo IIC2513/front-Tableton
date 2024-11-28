@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "../../assets/styles/Board.css"
 import Casilla from "./Casilla"
 import axios from "axios";
+import Swal from "sweetalert2"; 
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthContext";
 
@@ -45,6 +46,18 @@ function Board({enPartida, partidaId}){
                         Authorization: `Bearer ${token}`, // Agregar token para autenticación Chatgpt para pasar el token
                     }
                 });
+            const { tipo, texto } = response.data;
+            if (tipo === "alerta") {
+                Swal.fire({
+                    title: "Evento del Juego",
+                    text: texto,
+                    icon: "info", 
+                    timer: 3000, 
+                    showConfirmButton: false, 
+                    toast: true, 
+                    position: "top-end"
+                });
+                }
 
             console.log("Jugador movido:", response.data)
             fetchJugadoresPosicion(); 
