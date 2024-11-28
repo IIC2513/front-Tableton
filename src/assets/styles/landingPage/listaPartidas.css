@@ -1,0 +1,39 @@
+.contenedorBotonesPartida button{
+    color: #209cda;
+    border-style: none;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 0px 50px;
+    margin-top: 50px;
+}
+
+.listaPartidas{
+    padding: 10px 0px;
+    width:  auto;
+    list-style-type: none;
+    width: 300px;
+    display: flex;
+    margin:  0 auto;
+    border-radius: 10px;
+    
+}
+
+.listaPartidas ul {
+    list-style-type: none;
+    padding-left: 0;
+    padding: 10px;
+}
+
+.listaPartidas li {
+    list-style-type: none;
+    padding-left: 0;
+    padding: 10px;
+    background-color: white;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+#titutloListaPartida{
+    color: white;
+    font-size: 40px;
+}
