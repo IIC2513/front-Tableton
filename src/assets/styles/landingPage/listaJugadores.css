@@ -1,10 +1,14 @@
-
-
-.backgroundListaJugadores{
+.backgroundListaJugadores {
     margin-top: 170px; 
-    background-color: #209cda; /* El último valor es la opacidad del fondo (0.5 = 50%) ChatGPT me ayudo con la opacidad*/ 
+    background-color: #209cda; /* El último valor es la opacidad del fondo (0.5 = 50%) ChatGPT me ayudó con la opacidad*/ 
     height: 300px;
     padding: 10px 10px 100px 10px; /* arriba derecha abajo izquierda*/
     border-radius: 10px;
-    color: white
-};
+    color: white;
+}
+
+#enPartida {
+    height: auto;
+    width: 500px;
+    padding-bottom: 10px;
+}

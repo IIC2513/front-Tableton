@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { SocketContext } from "../../sockets/SocketContext";
 import axios from "axios";
 
-function ListaJugadores({gameId}) {
+function ListaJugadores({gameId, ubicacion}) {
     //const gameId = 1; // Harcodeado
 
     const [players, setPlayers] = useState([]);
@@ -64,24 +64,66 @@ function ListaJugadores({gameId}) {
         };
     }, [socket?.current, gameId]);
 
-    return (
-        <div className="backgroundListaJugadores">
-            <div className="listaJugadores">
-                <p>Lista de Espera Jugadores</p>
 
-                {/* Mostrar lista de jugadores o mensaje alternativo */}
-                {Array.isArray(players) && players.length > 0 ? (
+    const renderPlayerList = () => { //CHATGPT, adaptacion de botonesLandingPage
+        if (!players.length) {
+            return <p>No hay jugadores en espera</p>;
+        }
+
+        switch (ubicacion) {
+            case "enPartida":
+                return (
                     <ul>
                         {players.map((player, index) => (
-                            <li key={index}>{player.nombre}</li>
+                            <li key={index}>
+                                Nombre: {player.nombre} creditos: {player.creditos} propiedades: {player.id_propiedades.length} 
+                            </li>
                         ))}
                     </ul>
-                ) : (
-                    <p>No hay jugadores en espera</p>
-                )}
+                );
+            case "enEspera":
+                return (
+                    <ul>
+                        {players.map((player, index) => (
+                            <li key={index}>{player.nombre} </li>
+                        ))}
+                    </ul>
+                );
+            default:
+                return <p>Ubicación no reconocida</p>;
+        }
+    };
+
+    return (
+        <div className="backgroundListaJugadores" id ="enPartida">
+            <div className="listaJugadores" >
+                <p>Lista de Jugadores</p>
+                {renderPlayerList()}
             </div>
         </div>
     );
 }
+
+
+
+//     return (
+//         <div className="backgroundListaJugadores">
+//             <div className="listaJugadores">
+//                 <p>Lista de Espera Jugadores</p>
+
+//                 {/* Mostrar lista de jugadores o mensaje alternativo */}
+//                 {Array.isArray(players) && players.length > 0 ? (
+//                     <ul>
+//                         {players.map((player, index) => (
+//                             <li key={index}>{player.nombre}</li>
+//                         ))}
+//                     </ul>
+//                 ) : (
+//                     <p>No hay jugadores en espera</p>
+//                 )}
+//             </div>
+//         </div>
+//     );
+// }
 
 export default ListaJugadores;

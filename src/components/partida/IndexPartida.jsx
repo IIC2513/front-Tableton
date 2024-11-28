@@ -5,6 +5,7 @@ import "../../assets/styles/Board.css"
 import "../../assets/styles/index.css"
 import BarraTareas from "../common/barraTareas"
 import logo from "../../assets/imgs/casillas/casilla1.png";
+import ListaJugadores from "../landingPage/ListaJugadoresLandingPage"
 import { useParams } from 'react-router-dom';
 
 
@@ -19,6 +20,8 @@ function IndexPartida(){
         <BarraTareas></BarraTareas>
         <Background></Background>
 
+
+            <ListaJugadores gameId={partidaId} ubicacion="enPartida" ></ListaJugadores>
 
             <div className="Contenedor_lista_tablero">
 

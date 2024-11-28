@@ -21,7 +21,7 @@ function Index(){
 
             <div className="Contenedor_lista_tablero">
 
-                <ListaJugadores gameId={partidaId}></ListaJugadores>
+                <ListaJugadores gameId={partidaId} ubicacion="enEspera"></ListaJugadores>
                 <Board enPartida={false}></Board>
                 <div className="hacerEspacion"></div>
 
