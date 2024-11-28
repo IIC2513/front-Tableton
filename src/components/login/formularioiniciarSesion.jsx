@@ -37,7 +37,7 @@ function FormularioIniciarSesion(){
             console.log("el response en iniciar sesion es",response)
             connectSocket(response.data.userId)
 
-            navigate("/landingpage")
+            navigate("/")
 
          }).catch((error) => {
             console.log(error)

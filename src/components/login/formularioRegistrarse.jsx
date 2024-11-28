@@ -59,6 +59,7 @@ function FormularioRegistrarse() {
             });
     };
 
+
     return (
         <form onSubmit={handleSubmit} className="contenedorFormulario">
             <p>Usuario</p>
