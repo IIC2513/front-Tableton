@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/landingPage/botones.css"
 
@@ -12,7 +12,32 @@ function botones({ partidaId, ubicacion }){
     // para navegar entre rutas https://stackoverflow.com/questions/34735580/how-to-do-a-redirect-to-another-route-with-react-router
 
     const { token, setToken } = useContext(AuthContext);
+    const [isAdmin, setIsAdmin] = useState(false)
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchAdminStatus = async () => {
+
+            try {
+                const response = await axios.post(
+                    `${import.meta.env.VITE_BACKEND_URL}/usuario/datos`,
+                    {},
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+                console.log("la repuesta para ver si es admin es :", response.data.isAdmin)
+                setIsAdmin(response.data.isAdmin); // Actualiza el estado
+            } catch (error) {
+                console.log("Hubo un error al verificar el estado de administrador:", error);
+            }
+            
+        };
+
+        fetchAdminStatus();
+    }, [token]);
     
 
     const hacerLogin = () =>{
@@ -38,12 +63,6 @@ function botones({ partidaId, ubicacion }){
 
 
             
-    };
-
-    const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
-        setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
-        localStorage.removeItem("token"); // Borra el token del localStorage
-        navigate("/"); // Navega a la página de inicio de sesión o donde prefieras
     };
 
     const volver = () =>{
@@ -79,6 +98,24 @@ function botones({ partidaId, ubicacion }){
         }
     };
 
+    const iniciarPartida = async () =>{
+        try{
+            const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/juego/iniciar/${partidaId}`)
+            console.log("la respuesta a inicar la partida es:", response.data)
+            alert (response.data.message)
+        }catch (error){
+            if (error.status == 401) {
+                alert("La partida ya esta iniciada")
+            }
+            else if (error.status == 402){
+                alert("La partida ya terminó")
+            }
+        }
+        
+    }
+
+    
+
     const renderButtons = () => {   //CHATGPT para mostrar distintos botones en distintas partes
         if (!token || token === "null") {
             return (
@@ -90,7 +127,12 @@ function botones({ partidaId, ubicacion }){
 
         switch (ubicacion) {
             case "landingpage":
-                return (
+                return isAdmin ? (
+                    <>
+                        <button onClick={iniciarPartida}> Iniciar partida </button>
+                        <button onClick={irPartida}>Ir a Partida</button>
+                    </>
+                ) : (
                     <>
                         <button onClick={irPartida}>Ir a Partida</button>
                     </>
