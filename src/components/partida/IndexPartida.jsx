@@ -3,6 +3,7 @@ import Background from "../common/Background"
 import Board from "../common/Board"
 import "../../assets/styles/Board.css"
 import "../../assets/styles/index.css"
+import "../../assets/styles/enPartida/IndexPartida.css"
 import BarraTareas from "../common/barraTareas"
 import logo from "../../assets/imgs/casillas/casilla1.png";
 import ListaJugadores from "../landingPage/ListaJugadoresLandingPage"
@@ -20,6 +21,7 @@ function IndexPartida(){
         <BarraTareas></BarraTareas>
         <Background></Background>
 
+        <div className="contenedorListaTablero">
 
             <ListaJugadores gameId={partidaId} ubicacion="enPartida" ></ListaJugadores>
 
@@ -35,8 +37,6 @@ function IndexPartida(){
 
             </div>
 
-            <div>
-                {/* <Botones></Botones> */}
             </div>
     
 
