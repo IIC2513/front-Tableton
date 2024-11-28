@@ -5,6 +5,7 @@ import { Link ,useNavigate} from "react-router-dom"
 import axios from "axios";
 import { AuthContext } from "../../auth/AuthContext";
 import { SocketContext } from "../../sockets/SocketContext";
+import Swal from "sweetalert2"; 
 
 function FormularioIniciarSesion(){
 
@@ -40,6 +41,21 @@ function FormularioIniciarSesion(){
 
          }).catch((error) => {
             console.log(error)
+            if (
+                error.response &&
+                error.response.data &&
+                error.response.data.tipo === "alerta"
+            ) {
+                Swal.fire({
+                    title: "Error al registrarse",
+                    text: error.response.data.texto,
+                    icon: "error",
+                    timer: 5000,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: "top-end",
+                });
+            }
          })
     }
 

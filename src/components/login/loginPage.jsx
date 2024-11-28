@@ -6,6 +6,7 @@ import Background from "../common/Background"
 import BarraTareas from "../common/barraTareas"
 import { useNavigate } from "react-router-dom"
 
+
 function LoginPage(){
 
     const navigate = useNavigate();
