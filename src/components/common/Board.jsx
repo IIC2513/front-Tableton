@@ -52,10 +52,10 @@ function Board({enPartida, partidaId}){
                     title: "Evento del Juego",
                     text: texto,
                     icon: "info", 
-                    timer: 3000, 
+                    timer: 5000, 
                     showConfirmButton: false, 
                     toast: true, 
-                    position: "top-end"
+                    position: "centre"
                 });
                 }
 
