@@ -7,7 +7,7 @@ import { AuthContext } from "../../auth/AuthContext";
 import axios from "axios";
 
 
-function botones({ partidaId }){
+function botones({ partidaId, ubicacion }){
 
     // para navegar entre rutas https://stackoverflow.com/questions/34735580/how-to-do-a-redirect-to-another-route-with-react-router
 
@@ -19,13 +19,35 @@ function botones({ partidaId }){
         navigate("/login")
     };
 
-    const irPartida = () =>{
-        navigate(`/partida/${partidaId}`);    };
+    const irPartida = async () =>{
+
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/juego/estado/${partidaId}`)
+
+        console.log("Estado partida:", response.data.estadoPartida)
+
+        if (response.data.estadoPartida === "creada"){
+
+            return navigate(`/partida/${partidaId}/espera`);
+        }else if (response.data.estadoPartida === "terminada"){
+            
+            //en vola hacer que no se muestre?
+
+        }else if (response.data.estadoPartida === "iniciada"){
+            return navigate(`/partida/${partidaId}`)
+        }
+
+
+            
+    };
 
     const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
         setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
         localStorage.removeItem("token"); // Borra el token del localStorage
         navigate("/"); // Navega a la página de inicio de sesión o donde prefieras
+    };
+
+    const volver = () =>{
+        navigate("/")
     };
 
     const crearJugador = async () => {
@@ -57,26 +79,39 @@ function botones({ partidaId }){
         }
     };
 
+    const renderButtons = () => {   //CHATGPT para mostrar distintos botones en distintas partes
+        if (!token || token === "null") {
+            return (
+                <button onClick={hacerLogin} id="IniciarSesionRegistrarse">
+                    Iniciar Sesión/Registrarse
+                </button>
+            );
+        }
+
+        switch (ubicacion) {
+            case "landingpage":
+                return (
+                    <>
+                        <button onClick={irPartida}>Ir a Partida</button>
+                    </>
+                );
+            case "partidaEspera":
+                return (
+                    <>
+                        <button onClick={crearJugador}>Unirse a Partida</button>
+                        <button onClick={volver}>Volver</button>
+                    </>
+                );
+            default:
+                return <p>No hay acciones disponibles para esta ubicación.</p>;
+        }
+    };
+
 
 
     return(
 
-        <div className="contenedorBotones">
-
-            <div>
-            {token && token !== "null" ? (
-                <>
-                    <button onClick={crearJugador}>Unirse a Partida</button>
-                    {/* <button onClick={cerrarSesion}>Cerrar Sesión</button> */}
-                    <button onClick={irPartida}>Ir a partida</button>
-                </>
-            ) : (
-                <button onClick={hacerLogin} id="IniciarSesionRegistrarse">Iniciar Sesion/Registrarse</button>
-            )}
-            </div>
-
-        </div>
-
+         <div className="contenedorBotones">{renderButtons()}</div>
     )
 }
 
