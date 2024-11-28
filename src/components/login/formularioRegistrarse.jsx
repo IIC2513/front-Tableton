@@ -35,7 +35,7 @@ function FormularioRegistrarse() {
                 console.log("El response en iniciar sesión es", response);
                 connectSocket(response.data.userId);
 
-                navigate("/landingpage");
+                navigate("/");
             })
             .catch((error) => {
                 console.log("Estoy en el catch error del front");
