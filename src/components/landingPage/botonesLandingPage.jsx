@@ -7,7 +7,7 @@ import { AuthContext } from "../../auth/AuthContext";
 import axios from "axios";
 
 
-function botones(){
+function botones({ partidaId }){
 
     // para navegar entre rutas https://stackoverflow.com/questions/34735580/how-to-do-a-redirect-to-another-route-with-react-router
 
@@ -20,14 +20,7 @@ function botones(){
     };
 
     const irPartida = () =>{
-        navigate("/partida")
-    };
-    const irNosotros = () => {
-        navigate("/nosotros");
-    };
-    const irReglas = () => {
-        navigate("/reglas");
-    };
+        navigate(`/partida/${partidaId}`);    };
 
     const cerrarSesion = () => { //Chat gpt me ayudo a cerrar la sesion con el removeTOken
         setToken(null); // Limpia el token en el contexto (esto dependerá de cómo manejes el token)
@@ -36,8 +29,6 @@ function botones(){
     };
 
     const crearJugador = async () => {
-
-        const partidaId = 1 //harcodeado por mientras
 
         try {   //chatgpt ayuda para pasar por el header
             console.log("antes del post")
@@ -58,6 +49,8 @@ function botones(){
 
             console.log("Jugador creado:", response.data);
             alert("Te has unido a la partida exitosamente!"); // Confirmación al usuario
+            navigate(`/partida/${partidaId}`)
+
         } catch (error) {
             console.error("Error al unirse a la partida:", error.response?.data || error.message);
             alert("Error al unirse a la partida. Inténtalo de nuevo.");
@@ -74,7 +67,7 @@ function botones(){
             {token && token !== "null" ? (
                 <>
                     <button onClick={crearJugador}>Unirse a Partida</button>
-                    <button onClick={cerrarSesion}>Cerrar Sesión</button>
+                    {/* <button onClick={cerrarSesion}>Cerrar Sesión</button> */}
                     <button onClick={irPartida}>Ir a partida</button>
                 </>
             ) : (
