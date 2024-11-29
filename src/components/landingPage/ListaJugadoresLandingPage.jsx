@@ -76,7 +76,7 @@ function ListaJugadores({gameId, ubicacion}) {
                     <ul>
                         {players.map((player, index) => (
                             <li key={index}>
-                                Nombre: {player.nombre} creditos: {player.creditos} propiedades: {player.id_propiedades.length} 
+                                Nombre: {player.nombre} creditos: {player.creditos} propiedades: {player.id_propiedades?.length ?? 0}
                             </li>
                         ))}
                     </ul>
