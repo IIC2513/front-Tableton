@@ -82,7 +82,7 @@ function ListaPartidas() {
                                 <strong>Paritda {partida.id}</strong>
                                 <p>Jugadores: {partida.jugadoresCount}</p>
                                 <p>Estado: {partida.estado || "Desconocido"}</p>
-                                <Botones partidaId={partida.id}></Botones>
+                                <Botones partidaId={partida.id} ubicacion="landingpage"></Botones>
                             </li>
                         ))}
                     </ul>
