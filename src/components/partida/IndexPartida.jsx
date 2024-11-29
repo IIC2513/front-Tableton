@@ -5,7 +5,7 @@ import "../../assets/styles/Board.css"
 import "../../assets/styles/index.css"
 import "../../assets/styles/enPartida/IndexPartida.css"
 import BarraTareas from "../common/barraTareas"
-import logo from "../../assets/imgs/casillas/casilla1.png";
+import logo from "../../assets/imgs/logo_uc.png";
 import ListaJugadores from "../landingPage/ListaJugadoresLandingPage"
 import { useParams } from 'react-router-dom';
 

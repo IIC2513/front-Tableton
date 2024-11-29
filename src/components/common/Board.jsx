@@ -55,7 +55,12 @@ function Board({enPartida, partidaId}){
                     timer: 5000, 
                     showConfirmButton: false, 
                     toast: true, 
-                    position: "centre"
+                    position: "top-right",
+                    customClass: {
+                        popup: "mi-alerta-popup",  
+                        title: "mi-alerta-titulo", 
+                        content: "mi-alerta-texto", 
+                    }
                 });
                 }
 
@@ -102,16 +107,32 @@ function Board({enPartida, partidaId}){
 
         return (
 
-            <div className="Board">
+<div className="Board">
+    {casillas.map((casillaId, index) => (
+        <Casilla
+            key={index}
+            casillaPosicion={casillaId}
+            enPartida={true}
+            jugadoresEnPosicion={jugadoresEnPosicion}
+        />
+    ))}
 
-                <button onClick={fetchJugadoresPosicion}>Actualizar Posiciones de Jugadores</button>
-                <button onClick={tirarDados}>Tirar Dados</button>
-                <button onClick={comprarInvestigacion}>Comprar Investigacion</button>
+    {/* Botones debajo del tablero */}
+    <div className="botones-acciones">
+        <button className="boton-accion" onClick={fetchJugadoresPosicion}>
+            Actualizar Posiciones de Jugadores
+        </button>
+        <button className="boton-accion" onClick={tirarDados}>
+            Tirar Dados
+        </button>
+        <button className="boton-accion" onClick={comprarInvestigacion}>
+            Comprar Investigación
+        </button>
+    </div>
+</div>
 
-                {casillas.map((casillaId, index) => (
-                    <Casilla key={index} casillaPosicion={casillaId} enPartida={true} jugadoresEnPosicion={jugadoresEnPosicion} />
-                ))}
-            </div>
+            
+            
 
 
         );

@@ -40,3 +40,22 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.mi-alerta-popup {
+  background-color: #091921; 
+  border-radius: 10px;      
+  padding: 20px;             
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.mi-alerta-titulo {
+  font-size: 18px;         
+  font-weight: bold;         
+  color: #4a2323;               
+}
+
+.mi-alerta-texto {
+  font-size: 14px;        
+  color: #ffffff;               
+}
