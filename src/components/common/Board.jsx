@@ -6,6 +6,7 @@ import axios from "axios";
 import Swal from "sweetalert2"; 
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthContext";
+import { SocketContext } from "../../sockets/SocketContext";
 
 function Board({enPartida, partidaId}){
 
@@ -18,6 +19,7 @@ function Board({enPartida, partidaId}){
 
     const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); 
     const { token, setToken } = useContext(AuthContext);
+    const { socket } = useContext(SocketContext);
     //const partidaId = 1 //harcodeado por mientras
 
     const fetchJugadoresPosicion = async () => {
@@ -91,11 +93,31 @@ function Board({enPartida, partidaId}){
     }
 
     // useEffect para actualizar las posiciones cuando enPartida cambia a true
+    // useEffect(() => {
+    //     if (enPartida) {
+    //         fetchJugadoresPosicion(); // Solicita posiciones al iniciar la partida
+    //     }
+    // }, [enPartida]);
+
     useEffect(() => {
         if (enPartida) {
-            fetchJugadoresPosicion(); // Solicita posiciones al iniciar la partida
+            fetchJugadoresPosicion();
+
+            if (socket?.current) {
+                const handleJugadorActualizado = (data) => {
+                    if (data.partidaId === partidaId) {
+                        setJugadoresEnPosicion(data.jugadores);
+                    }
+                };
+
+                socket.current.on("actualizarJugadores", handleJugadorActualizado);
+
+                return () => {
+                    socket.current.off("actualizarJugadores", handleJugadorActualizado);
+                };
+            }
         }
-    }, [enPartida]);
+    }, [enPartida, partidaId, socket?.current]);
 
 
     if (enPartida) {    
