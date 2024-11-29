@@ -3,9 +3,9 @@
 .contenedorFormulario{
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: #209cda;
     width: 300px;
-    height: 350px;
+    height: auto;
     text-align: left;
     padding: 0px 20px;
     padding-bottom: 20px;

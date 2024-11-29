@@ -3,7 +3,7 @@
 /* Chatgpt me ayudo con el css para colocarlo como fondo y que estuviera siempre atras */
 
 .Background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;

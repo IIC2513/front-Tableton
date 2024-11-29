@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import "../../assets/styles/Board.css"
 import Casilla from "./Casilla"
 import axios from "axios";
+import Swal from "sweetalert2"; 
 import { useContext } from "react";
 import { AuthContext } from "../../auth/AuthContext";
+import { SocketContext } from "../../sockets/SocketContext";
 
-function Board({enPartida}){
+function Board({enPartida, partidaId}){
 
     const casillas = [
         "casillaPosicion1","casillaPosicion2", "casillaPosicion3","casillaPosicion4", "casillaPosicion5","casillaPosicion6", "casillaPosicion7"
@@ -17,7 +19,8 @@ function Board({enPartida}){
 
     const [jugadoresEnPosicion, setJugadoresEnPosicion] = useState([]); 
     const { token, setToken } = useContext(AuthContext);
-    const partidaId = 1 //harcodeado por mientras
+    const { socket } = useContext(SocketContext);
+    //const partidaId = 1 //harcodeado por mientras
 
     const fetchJugadoresPosicion = async () => {
 
@@ -45,6 +48,23 @@ function Board({enPartida}){
                         Authorization: `Bearer ${token}`, // Agregar token para autenticación Chatgpt para pasar el token
                     }
                 });
+            const { tipo, texto } = response.data;
+            if (tipo === "alerta") {
+                Swal.fire({
+                    title: "Evento del Juego",
+                    text: texto,
+                    icon: "info", 
+                    timer: 5000, 
+                    showConfirmButton: false, 
+                    toast: true, 
+                    position: "top-right",
+                    customClass: {
+                        popup: "mi-alerta-popup",  
+                        title: "mi-alerta-titulo", 
+                        content: "mi-alerta-texto", 
+                    }
+                });
+                }
 
             console.log("Jugador movido:", response.data)
             fetchJugadoresPosicion(); 
@@ -78,27 +98,60 @@ function Board({enPartida}){
     }
 
     // useEffect para actualizar las posiciones cuando enPartida cambia a true
+    // useEffect(() => {
+    //     if (enPartida) {
+    //         fetchJugadoresPosicion(); // Solicita posiciones al iniciar la partida
+    //     }
+    // }, [enPartida]);
+
     useEffect(() => {
         if (enPartida) {
-            fetchJugadoresPosicion(); // Solicita posiciones al iniciar la partida
+            fetchJugadoresPosicion();
+
+            if (socket?.current) {
+                const handleJugadorActualizado = (data) => {
+                    if (data.partidaId === partidaId) {
+                        setJugadoresEnPosicion(data.jugadores);
+                    }
+                };
+
+                socket.current.on("actualizarJugadores", handleJugadorActualizado);
+
+                return () => {
+                    socket.current.off("actualizarJugadores", handleJugadorActualizado);
+                };
+            }
         }
-    }, [enPartida]);
+    }, [enPartida, partidaId, socket?.current]);
 
 
     if (enPartida) {    
 
         return (
 
-            <div className="Board">
+<div className="Board">
+    {casillas.map((casillaId, index) => (
+        <Casilla
+            key={index}
+            casillaPosicion={casillaId}
+            enPartida={true}
+            jugadoresEnPosicion={jugadoresEnPosicion}
+        />
+    ))}
 
-                <button onClick={fetchJugadoresPosicion}>Actualizar Posiciones de Jugadores</button>
-                <button onClick={tirarDados}>Tirar Dados</button>
-                <button onClick={comprarInvestigacion}>Comprar Investigacion</button>
+    {/* Botones debajo del tablero */}
+    <div className="botones-acciones">
+        <button className="boton-accion" onClick={tirarDados}>
+            Tirar Dados
+        </button>
+        <button className="boton-accion" onClick={comprarInvestigacion}>
+            Comprar Investigación
+        </button>
+    </div>
+</div>
 
-                {casillas.map((casillaId, index) => (
-                    <Casilla key={index} casillaPosicion={casillaId} enPartida={true} jugadoresEnPosicion={jugadoresEnPosicion} />
-                ))}
-            </div>
+            
+            
 
 
         );

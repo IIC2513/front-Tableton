@@ -2,8 +2,9 @@
 
 
 .contenedorBotones button{
+    color: #209cda;
     border-style: none;
     padding: 10px;
     border-radius: 4px;
-    margin: 0px 50px;
+    margin: 0px 10px;
 }

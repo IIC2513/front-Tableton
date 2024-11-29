@@ -1,0 +1,8 @@
+.contenedorListaTablero {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente */
+    text-align: center;
+    height: 100vh; /* Asegúrate de que el contenedor ocupe todo el alto de la pantalla */
+
+}

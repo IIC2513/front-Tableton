@@ -1,92 +1,99 @@
-
-import "../../assets/styles/loginPage/formularioRegistrarse.css"
+import "../../assets/styles/loginPage/formularioRegistrarse.css";
 import { useState, useContext } from "react";
-import { Link ,useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2"; 
 import { AuthContext } from "../../auth/AuthContext";
+import { SocketContext } from "../../sockets/SocketContext";
 
-function FormularioRegistrarse(){
-
+function FormularioRegistrarse() {
     const navigate = useNavigate();
 
-    const {token, setToken} = useContext(AuthContext)
+    const { token, setToken } = useContext(AuthContext);
+    const { connectSocket } = useContext(SocketContext);
 
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [contrasena, setPassword] = useState("");
 
-    const handleSubmit = async (event) =>{
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("mandaste el formulario")
-
-        //enviar los datos al backend
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/crearUsuario`,
-            {
+        console.log("Mandaste el formulario");
+        console.log(`${import.meta.env.VITE_BACKEND_URL}/crearUsuario`);
+        axios
+            .post(`${import.meta.env.VITE_BACKEND_URL}/crearUsuario`, {
                 nombre,
                 email,
-                contrasena
-            }
-         ).then((response) => {
-            //si no hay error en el request
-            console.log(response)
+                contrasena,
+            })
+            .then((response) => {
+                console.log(response);
 
-            const access_token = response.data.access_token
-            setToken(access_token);
+                const access_token = response.data.access_token;
+                setToken(access_token);
 
-            navigate("/")
+                console.log("El response en iniciar sesión es", response);
+                connectSocket(response.data.userId);
 
-         }).catch((error) => {
-            console.log("estoy en el catch error del front")
-            console.log(error)
-         })
-    }
+                navigate("/");
+            })
+            .catch((error) => {
+                console.log("Estoy en el catch error del front");
+                console.log(error);
 
+                if (
+                    error.response &&
+                    error.response.data &&
+                    error.response.data.tipo === "alerta"
+                ) {
+                    Swal.fire({
+                        title: "Error al registrarse",
+                        text: error.response.data.texto,
+                        icon: "error",
+                        timer: 5000,
+                        showConfirmButton: false,
+                        toast: true,
+                        position: "top-end",
+                    });
+                }
+            });
+    };
 
 
     return (
-
-
         <form onSubmit={handleSubmit} className="contenedorFormulario">
-
             <p>Usuario</p>
-            <input 
-                type="username" 
+            <input
+                type="username"
                 placeholder="Ingrese Usuario"
-                onChange={e => setNombre(e.target.value)}
+                onChange={(e) => setNombre(e.target.value)}
                 required
-                >
-            </input>
+            ></input>
 
             <p>Correo</p>
-
-            <input 
-                type="email" 
+            <input
+                type="email"
                 placeholder="Ingrese Correo"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
-                >
-    
-            </input>
+            ></input>
 
             <p>Contraseña</p>
-
-            <input 
-                type="password" 
+            <input
+                type="password"
                 placeholder="Ingrese Contraseña"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
-                >
-            </input>
+            ></input>
+            <p style={{ color: "red", fontSize: "12px", margin: "5px 0" }}>
+                La contraseña debe tener al menos 8 caracteres, y tener por lo menos una mayúscula, un número y un carácter especial.
+            </p>
 
-
-            <button className="elementos" type="submit" >Registarse</button>
-
+            <button className="elementos" type="submit">
+                Registrarse
+            </button>
         </form>
-            
-            
-
-
-    )
+    );
 }
 
-export default FormularioRegistrarse
+export default FormularioRegistrarse;
