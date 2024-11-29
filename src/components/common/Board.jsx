@@ -141,9 +141,6 @@ function Board({enPartida, partidaId}){
 
     {/* Botones debajo del tablero */}
     <div className="botones-acciones">
-        <button className="boton-accion" onClick={fetchJugadoresPosicion}>
-            Actualizar Posiciones de Jugadores
-        </button>
         <button className="boton-accion" onClick={tirarDados}>
             Tirar Dados
         </button>
